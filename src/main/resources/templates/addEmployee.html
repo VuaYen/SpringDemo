@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{employee.title}">Add Employee Form</title>
+    <link href="css/main.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/static/css/main.css}" href="../static/css/main.css">
+    <link rel="stylesheet"	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+</head>
+<body>
+<section>
+    <div class="jumbotron">
+        <div class="container">
+            <h1>Valued Employees</h1>
+            <p>Add a new one<p>
+        </div>
+    </div>
+</section>
+<div id="global">
+    <p><a href="?language=en_US">English</a> | <a href="?language=vi_VN">Vietnamese</a> </p>
+    <form action="#" th:action="@{/add}" th:object="${newEmployee}"
+          method="post">
+        <fieldset>
+            <legend><span th:text="#{employee.form.title}">Add an Employee</span></legend>
+            <ul th:if="${#fields.hasErrors('*')}">
+                <li th:each="err : ${#fields.errors('*')}" th:text="${err}" >Input
+                    is incorrect</li>
+            </ul>
+            <p>
+                <label for="employeeNumber"><span data-th-text="#{employee.form.employeeNumber}">Emp No#</span></label> <input type="text" id="employeeNumber" th:field="*{employeeNumber}" />
+            <p th:if="${#fields.hasErrors('employeeNumber')}" th:errors="*{employeeNumber}" th:errorclass="fieldError">Incorrect employeeNumber</p>
+            </p>
+            <p>
+                <label for="firstName"><span th:text="#{employee.form.firstName}">First Name: </span></label> <input type="text" id="firstName"
+                                                                                                                     th:field="*{firstName}" />
+            <p th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" th:errorclass="fieldError">Incorrect First Name</p>
+            </p>
+            <p>
+                <label for="lastName"><span th:text="#{employee.form.lastName}">Last Name: </span></label> <input type="text" id="lastName"
+                                                                                                                  th:field="*{lastName}" />
+            <p th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" th:errorclass="fieldError">Incorrect Last Name</p>
+            </p>
+
+            <p>
+                <label for="Age"><span th:text="#{employee.form.age}">Age: </span></label> <input type="text" id="age"
+                                                                                                                  th:field="*{age}" />
+            <p th:if="${#fields.hasErrors('age')}" th:errors="*{age}" th:errorclass="fieldError">Incorrect Age</p>
+            </p>
+
+            <p>
+                <label for="Title"><span th:text="#{employee.form.titlef}">Title: </span></label> <input type="text" id="title"
+                                                                                                                  th:field="*{title}" />
+            <p th:if="${#fields.hasErrors('title')}" th:errors="*{title}" th:errorclass="fieldError">Incorrect title</p>
+            </p>
+
+
+
+           <h4><span th:utext="#{employee.form.address}"></span></h4>
+            <p>
+                <label for="street"><span th:text="#{employee.form.street}">Street: </span></label> <input type="text" id="street"
+                                                                                                           th:field="*{address.street}" />
+            <p th:if="${#fields.hasErrors('address.street')}" th:errors="*{address.street}" th:errorclass="fieldError">Incorrect Street Address</p>
+            </p>
+            <p>
+                <label for="state"><span th:text="#{employee.form.city}">City: </span></label> <input type="text" id="city"
+                                                                                                        th:field="*{address.city}" />
+            <p th:if="${#fields.hasErrors('address.city')}" th:errors="*{address.city}" th:errorclass="fieldError">Incorrect City</p>
+            </p>
+            <p>
+                <label for="state"><span th:text="#{employee.form.state}">State: </span></label> <input type="text" id="state"
+                                                                                                        th:field="*{address.state}" />
+            <p th:if="${#fields.hasErrors('address.state')}" th:errors="*{address.state}" th:errorclass="fieldError">Incorrect State</p>
+            </p>
+            <p>
+                <label for="zipCode"><span th:text="#{employee.form.zipCode}">Zip: </span></label> <input type="text" id="zipCode"
+                                                                                                          th:field="*{address.zipCode}" />
+            <p th:if="${#fields.hasErrors('address.zipCode')}" th:errors="*{address.zipCode}" th:errorclass="fieldError">Incorrect Zip Code</p>
+            </p>
+            <p id="buttons">
+                <input id="reset" type="reset" th:value="#{employee.form.resetbtn}" value="Reset" tabindex="4"> <input
+                    id="submit" type="submit" tabindex="5" th:value="#{employee.form.addbtn}" value="Add Employee">
+            </p>
+        </fieldset>
+    </form>
+</div>
+</body>
+</html>

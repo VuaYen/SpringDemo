@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Employees</title>
+    <link href="css/main.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/main.css}" href="../css/main.css"/>
+    <link rel="stylesheet"	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+    <style>
+        table {width: 800px;}
+       td { width: auto; }
+    </style>
+</head>
+
+<body>
+<section>
+    <div class="jumbotron">
+        <div class="container">
+            <img th:src="@{/static/css/images/miu.png}" src="../static/css/images/miu.png"/>
+
+            <h1>List of Employees</h1>
+            <p>All of the Employees of our Company!!!</p>
+        </div>
+        <p><form th:action="@{/add}" th:method="get">
+            <input type="submit" id="btnAdd" class="btn btn-primary" value ="Add A New Employee"/>
+            </form>
+            </p>
+
+
+    </div>
+</section>
+
+<section class="container">
+    <div class="row">
+        <table class="control-label col-lg-2" border="1">
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Age </th>
+                <th>Title</th>
+                <th>Empl NO#</th>
+                <th>Address</th>
+            </tr>
+
+            <th:block th:each="employee : ${employees}">
+                <tr>
+                    <td style="width: 10%"><span th:text="${employee.firstName} "></span>
+                    </td>
+                    <td style="width: 10%"><span th:text="${employee.lastName} "></span></td>
+                    <td><span th:text="${employee.age} "> </span></td>
+                    <td><span th:text="${employee.title}"> </span></td>
+                    <td><span th:text="${employee.employeeNumber} ">  </span></td>
+                    <td style="width: 35%"><span th:text="${employee.address.street}"></span><span
+                            th:text="${employee.address.city}"></span>, <span
+                            th:text="${employee.address.state}"></span><span
+                            th:text="${employee.address.zipCode} "></span></td>
+
+                </tr>
+
+            </th:block>
+        </table>
+    </div>
+</section>
+</body>
+
+</html>
