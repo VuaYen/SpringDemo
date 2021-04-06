@@ -1,4 +1,2 @@
-insert into booking(booking_name) values ('Kris');
-insert into booking(booking_name) values ('Martin');
-insert into booking(booking_name) values ('Andy');
-insert into booking(booking_name) values ('Andy');
+insert into booking values (1,'Kris');
+insert into booking values (2,'Martin');
